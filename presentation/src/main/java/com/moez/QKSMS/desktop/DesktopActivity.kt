@@ -156,9 +156,6 @@ class DesktopActivity : QkThemedActivity(), DesktopView {
         cameraSource.release()
     }
 
-    override fun onStop() {
-        super.onStop()
-        release()
-    }
+
 
 }
