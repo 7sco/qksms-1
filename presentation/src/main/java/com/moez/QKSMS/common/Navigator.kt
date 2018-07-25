@@ -29,7 +29,9 @@ import android.provider.ContactsContract
 import android.provider.Settings
 import android.provider.Telephony
 import android.view.View
+import android.widget.Toast
 import com.moez.QKSMS.BuildConfig
+import com.moez.QKSMS.desktop.DesktopActivity
 import com.moez.QKSMS.feature.blocked.BlockedActivity
 import com.moez.QKSMS.feature.compose.ComposeActivity
 import com.moez.QKSMS.feature.conversationinfo.ConversationInfoActivity
@@ -255,6 +257,12 @@ class Navigator @Inject constructor(
             intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
             startActivity(intent)
         }
+    }
+
+    fun showDesktop(){
+        Toast.makeText(context, "Desktop Clicked", Toast.LENGTH_LONG).show()
+        val intent = Intent(context, DesktopActivity::class.java)
+        startActivity(intent)
     }
 
 }

@@ -18,6 +18,7 @@
  */
 package com.moez.QKSMS.injection
 
+import com.moez.QKSMS.desktop.DesktopActivity
 import com.moez.QKSMS.feature.blocked.BlockedActivity
 import com.moez.QKSMS.feature.blocked.BlockedActivityModule
 import com.moez.QKSMS.feature.compose.ComposeActivity
@@ -95,5 +96,9 @@ abstract class ActivityBuilderModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [ThemePickerActivityModule::class])
     abstract fun bindThemePickerActivity(): ThemePickerActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [SettingsActivityModule::class])
+    abstract fun bindDesktopActivity(): DesktopActivity
 
 }

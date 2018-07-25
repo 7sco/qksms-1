@@ -85,6 +85,7 @@ class MainActivity : QkThemedActivity(), MainView {
                 blocking.clicks().map { DrawerItem.BLOCKING },
                 settings.clicks().map { DrawerItem.SETTINGS },
                 plus.clicks().map { DrawerItem.PLUS },
+                desktop.clicks().map { DrawerItem.DESKTOP },
                 help.clicks().map { DrawerItem.HELP }))
     }
     override val optionsItemIntent: Subject<Int> = PublishSubject.create()
