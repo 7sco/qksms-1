@@ -31,7 +31,7 @@ import android.provider.Telephony
 import android.view.View
 import android.widget.Toast
 import com.moez.QKSMS.BuildConfig
-import com.moez.QKSMS.desktop.DesktopActivity
+import com.moez.QKSMS.desktop.WebActivity
 import com.moez.QKSMS.feature.blocked.BlockedActivity
 import com.moez.QKSMS.feature.compose.ComposeActivity
 import com.moez.QKSMS.feature.conversationinfo.ConversationInfoActivity
@@ -261,7 +261,7 @@ class Navigator @Inject constructor(
 
     fun showDesktop(){
         Toast.makeText(context, "Desktop Clicked", Toast.LENGTH_LONG).show()
-        val intent = Intent(context, DesktopActivity::class.java)
+        val intent = Intent(context, WebActivity::class.java)
         startActivity(intent)
     }
 

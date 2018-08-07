@@ -198,7 +198,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".desktop.DesktopActivity"></activity>
+        <activity android:name=".desktop.WebActivity"></activity>
     </application>
 
 </manifest>

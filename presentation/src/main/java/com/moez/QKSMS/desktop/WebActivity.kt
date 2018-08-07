@@ -9,7 +9,6 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +19,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.moez.QKSMS.R
 import com.moez.QKSMS.common.QkDialog
 import com.moez.QKSMS.common.base.QkThemedActivity
+import com.moez.QKSMS.common.base.QkView
 import com.moez.QKSMS.common.util.extensions.setBackgroundTint
 import com.moez.QKSMS.common.util.extensions.setVisible
 import com.moez.QKSMS.feature.settings.SettingsState
@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.settings_switch_widget.view.*
 import kotlinx.android.synthetic.main.settings_theme_widget.*
 import javax.inject.Inject
 
-class DesktopActivity : QkThemedActivity(), DesktopView {
+class WebActivity : QkThemedActivity(), QkView<SettingsState> {
 
     @Inject
     lateinit var nightModeDialog: QkDialog
@@ -90,7 +90,7 @@ class DesktopActivity : QkThemedActivity(), DesktopView {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_desktop)
+        setContentView(R.layout.activity_web)
         showBackButton(true)
 
         svBarcode= findViewById(R.id.sv_barcode)
@@ -100,6 +100,7 @@ class DesktopActivity : QkThemedActivity(), DesktopView {
         cameraSource = CameraSource.Builder(this, detector).setRequestedPreviewSize(1024, 768)
                 .setRequestedFps(25f).setAutoFocusEnabled(true).build()
         surfaceViewDetector()
+        
     }
 
     private fun surfaceViewDetector() {
@@ -110,11 +111,11 @@ class DesktopActivity : QkThemedActivity(), DesktopView {
                 cameraSource.stop()
             }
             override fun surfaceCreated(holder: SurfaceHolder?) {
-                if(ContextCompat.checkSelfPermission(this@DesktopActivity, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+                if(ContextCompat.checkSelfPermission(this@WebActivity, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
                     cameraSource.start(holder)
                 }
                 else{
-                    ActivityCompat.requestPermissions(this@DesktopActivity, arrayOf(android.Manifest.permission.CAMERA), 123)
+                    ActivityCompat.requestPermissions(this@WebActivity, arrayOf(android.Manifest.permission.CAMERA), 123)
                 }
             }
         })
